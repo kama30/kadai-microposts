@@ -74,16 +74,4 @@ class UsersController extends Controller
         
         return view('users.favorites', $data);
     }
-    
-    public function favorite(Request $request, $id)
-    {
-        \Auth::user()->favorite($id);
-        return back();
-    }
-    
-    public function unfavorite(Request $request, $id)
-    {
-        \Auth::user()->unfavorite($id);
-        return back();
-    }
 }
