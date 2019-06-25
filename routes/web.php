@@ -20,6 +20,9 @@ Route::group(['middleware' => ['auth']], function() {
         Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
         Route::get('followings', 'UsersController@followings')->name('users.followings');
         Route::get('followers', 'UsersController@followers')->name('users.followers');
+        Route::post('favorite', 'UsersController@favorite')->name('users.favorite');
+        Route::delete('unfavorite', 'UsersController@unfavorite')->name('users.unfavorite');
+        Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
     });
 });
 
