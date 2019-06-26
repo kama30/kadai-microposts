@@ -13,7 +13,7 @@
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
+    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy', 'edit', 'update']]);
     
     Route::group(['prefix' => 'users/{id}'], function() {
         Route::post('follow', 'UserFollowController@store')->name('user.follow');

@@ -12,9 +12,7 @@
                 <div class="d-flex">
                     @include('favorites.favorite_button', ['microposts' => $micropost])
                     @if (Auth::id() == $micropost->user_id)
-                        {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                        {!! Form::close() !!}
+                        {!! Link_to_route('microposts.edit', 'Edit', $micropost->id, ['class' => 'btn btn-secondary btn-sm mr-1']) !!}
                     @endif
                 </div>
             </div>

@@ -45,4 +45,28 @@ class MicropostsController extends Controller
         
         return back();
     }
+    
+    public function edit($id)
+    {
+        $micropost = \App\Micropost::find($id);
+        
+        if (\Auth::id() === $micropost->user_id) {
+            return view('microposts.edit', ['micropost' => $micropost, ]);
+        } else {
+            return redirect('/');
+        }
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'content' => 'required|max:191',
+            ]);
+        
+        $request->user()->microposts()->update([
+            'content' => $request->content,
+            ]);
+        
+        return redirect('/');
+    }
 }
