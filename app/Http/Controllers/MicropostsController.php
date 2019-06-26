@@ -50,8 +50,12 @@ class MicropostsController extends Controller
     {
         $micropost = \App\Micropost::find($id);
         
-        if (\Auth::id() === $micropost->user_id) {
-            return view('microposts.edit', ['micropost' => $micropost, ]);
+        if ($micropost) {
+            if (\Auth::id() === $micropost->user_id) {
+                return view('microposts.edit', ['micropost' => $micropost, ]);
+            } else {
+                return redirect('/');
+            }
         } else {
             return redirect('/');
         }
